@@ -1,9 +1,9 @@
-import ezdrawing
+import ezdrawingtk
 
 color = (0, 0, 0)
 def selectColor():
     global color
-    pressed_keys = ezdrawing.get_pressed_keys()
+    pressed_keys = ezdrawingtk.get_pressed_keys()
     if "q" in pressed_keys:
         color = (0, 0, 0)
     elif "w" in pressed_keys:
@@ -18,7 +18,7 @@ def selectColor():
 size = 1
 def selectSize():
     global size
-    pressed_keys = ezdrawing.get_pressed_keys()
+    pressed_keys = ezdrawingtk.get_pressed_keys()
     if "a" in pressed_keys:
         size = 1
     if "s" in pressed_keys:
@@ -36,18 +36,17 @@ def selectSize():
     if "k" in pressed_keys:
         size = 128
 
-ezdrawing.open_window((800, 800))
+ezdrawingtk.open_window((800, 800))
 
 last_mouse_pos = (0, 0)
-while not ezdrawing.should_quit():
+while not ezdrawingtk.should_quit():
     selectColor()
     selectSize()
     
-    mouse_pos = ezdrawing.get_mouse_pos()
-    if 1 in ezdrawing.get_pressed_mouse_buttons():
-        ezdrawing.draw_capped_line(color, last_mouse_pos, mouse_pos, size)
+    mouse_pos = ezdrawingtk.get_mouse_pos()
+    if 1 in ezdrawingtk.get_pressed_mouse_buttons():
+        ezdrawingtk.draw_capped_line(color, last_mouse_pos, mouse_pos, size)
     
     last_mouse_pos = mouse_pos
     
-    ezdrawing.update()
-ezdrawing.quit()
+    ezdrawingtk.update()
